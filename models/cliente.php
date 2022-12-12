@@ -27,7 +27,7 @@ class Cliente {
 
     public static function getWhere($id_cliente) {
         $db = new Connection();
-        $query = "SELECT * FROM clientes WHERE id=$id_cliente";
+        $query = "SELECT * FROM clientes WHERE id_cliente=$id_cliente";
         $resultado = $db->query($query);
         $datos = [];
         if($resultado->num_rows){
@@ -60,8 +60,7 @@ class Cliente {
     public static function update($id_cliente, $nombre, $ap, $am, $fn, $genero) {
         $db = new Connection();
         $query = "UPDATE  clientes  SET
-        nombre = '".$nombre."', ap= '".$ap."', am='".$am."', fn='".$fn."', genero='".$genero."' 
-        WHERE id=$id_cliente ";
+        nombre = '$nombre', ap= '$ap', am='$am', fn='$fn', genero='$genero' WHERE id_cliente=$id_cliente ";
         $db->query($query);
         if($db->affected_rows){
             return true;
@@ -71,7 +70,7 @@ class Cliente {
 
     public static function delete($id_cliente){
         $db = new Connection();
-        $query = "DELETE FROM clientes WHERE id=$id_cliente";
+        $query = "DELETE FROM clientes WHERE id_cliente=$id_cliente";
         $db->query($query);
         if($db->affected_rows){
             return true;
